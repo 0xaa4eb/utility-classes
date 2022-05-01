@@ -49,12 +49,18 @@ public class Watcher implements AutoCloseable {
 
     @Override
     public void close() {
-        executor.shutdownNow();
         try {
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException(e);
+
+            watchTask.close();
+        } finally {
+
+            executor.shutdownNow();
+            try {
+                executor.awaitTermination(5, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e);
+            }
         }
     }
 }

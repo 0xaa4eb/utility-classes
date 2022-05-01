@@ -3,7 +3,7 @@ package com.xaa4eb.watcher;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class WatchTask implements Runnable {
+public class WatchTask implements Runnable, AutoCloseable {
 
     private final List<AttributeWatcher> fieldsToWatch = new CopyOnWriteArrayList<>();
     private final AttributeChangesOutput output;
@@ -37,5 +37,10 @@ public class WatchTask implements Runnable {
                 th.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void close() {
+
     }
 }

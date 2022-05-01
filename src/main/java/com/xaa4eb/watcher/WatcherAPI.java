@@ -10,7 +10,7 @@ public class WatcherAPI {
         }
         synchronized (WatcherAPI.class) {
             if (instance == null) {
-                instance = new Watcher(System.out::println);
+                instance = new Watcher(new SystemOutAttributeChangesOutput());
             }
             return instance;
         }

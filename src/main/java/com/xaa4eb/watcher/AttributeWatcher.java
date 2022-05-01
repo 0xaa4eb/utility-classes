@@ -22,7 +22,7 @@ class AttributeWatcher {
             Value value = field.get(object);
             if (!Objects.equals(value, lastSeenValue)) {
                 lastSeenValue = value.copy();
-                return new AttributeChangeResult(true, field, value, object, System.currentTimeMillis());
+                return new AttributeChangeResult(true, field, value, object, System.currentTimeMillis(), System.nanoTime());
             }
         } catch (Throwable e) {
             e.printStackTrace();

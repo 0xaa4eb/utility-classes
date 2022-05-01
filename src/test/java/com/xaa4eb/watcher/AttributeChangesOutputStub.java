@@ -12,6 +12,11 @@ public class AttributeChangesOutputStub implements AttributeChangesOutput {
         this.results.add(result);
     }
 
+    @Override
+    public void close() {
+
+    }
+
     public List<AttributeChangeResult> getResults() {
         return new ArrayList<>(results);
     }
